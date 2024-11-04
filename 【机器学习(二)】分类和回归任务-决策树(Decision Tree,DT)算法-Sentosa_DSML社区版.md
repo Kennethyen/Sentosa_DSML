@@ -47,22 +47,22 @@ if not (A < B) and not (B < C) : return [C, B, A]
 
 ## （二）划分选择
 &emsp;&emsp;在构建决策树的过程中，划分选择（也叫做分裂选择）是决定如何根据数据的特征来划分节点的关键步骤。这个过程涉及选择一个特征以及相应的分割阈值或类别，使得数据集在该节点被分割为尽可能纯净的子集。不同的划分选择方法使用不同的准则来衡量数据分割的质量。设N个训练样本为：
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/d0b8dd790c5b4c98884ae0ae547470d7.jpeg#pic_center.png =400x50)
+![image](https://github.com/user-attachments/assets/e21349b5-cd15-471c-a34e-9382e2be27ae)
 ### 1、信息增益
 &emsp;&emsp;熵和信息增益信息增益的思想基于 Claude Elwood Shannon于1948年提出的信息论。信息增益基于熵的概念。熵是衡量数据集不确定性或混乱度的一种度量。信息增益的目标是通过划分数据减少这种不确定性。
 &emsp;&emsp;熵的定义如下：
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/618e95fd96e642c690761f2566788ed2.jpeg#pic_center.png =300x100)
+![image](https://github.com/user-attachments/assets/3b4d7a21-1369-459e-bf4f-774561d8e67a)
 &emsp;&emsp;信息增益是划分前后的熵的减少量：
 ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/497ba33dc87b4bb792ca0de2aa65753f.jpeg#pic_center)
 &emsp;&emsp;其中，第一项是熵，第二项是子节点的加权熵。因此，该差异反映了熵的减少或从使用属性获得的信息。
 ### 2、基尼指数
 &emsp;&emsp;基尼指数衡量目标属性值的概率分布之间的差异，定义如下：
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/91168da778b34b06b6d345c322a25e12.jpeg#pic_center.png =400x110)
+![image](https://github.com/user-attachments/assets/e39403af-c1c3-4c07-a82b-6260e45109a7)
 &emsp;&emsp;目标是找到一个最“纯粹”的节点，即具有单个类的实例。与基于信息增益的标准中使用的熵和增益信息的减少类似，所选择的属性是杂质减少最多的属性。
 ### 3、卡方检验
 &emsp;&emsp;卡方统计 (χ2) 标准基于将由于分裂而获得的类别频率值与该类别的先验频率进行比较。χ2 值的计算公式为：
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/1462b9146e9445169bfcdc648045cf98.jpeg#pic_center.png =400x110)
-&emsp;&emsp;其中，![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/7d60b9f44ca042218dd5dd848d5c68a0.jpeg#pic_center.png =200x60)
+![image](https://github.com/user-attachments/assets/45e48a61-acbb-4a51-86ad-75bb717fd4ea)
+&emsp;&emsp;其中，![image](https://github.com/user-attachments/assets/197e5579-9375-424c-a391-10a506fca032)
 &emsp;&emsp;是k中样本N的先验频率。χ2值越大，表明分割越均匀，即来自某个类的实例的频率更高。通过χ2的最大值选择属性。
 &emsp;&emsp;划分选择的好坏直接影响决策树的性能。选择恰当的划分标准有助于生成更优的决策树，提高模型的预测准确性，减少过拟合的风险。在实际应用中，信息增益和基尼指数是最常见的选择，具体使用哪种方法往往取决于任务的类型（分类或回归）和数据的性质。
 ## （三）停止标准
@@ -431,7 +431,8 @@ plt.show()
 &emsp;&emsp;**故障预测**：预测设备故障，减少停机时间；
 &emsp;&emsp;**设备维护**：通过分析机器的传感器数据，检测设备的异常行为；
 &emsp;&emsp;**环境保护**：用于气象预测、大气污染监测等。
-&emsp;&emsp;欢迎访问官网https://sentosa.znv.com/，下载体验Sentosa_DSML社区版。同时，我们在B站、CSDN、知乎、博客园等平台也有技术讨论博客和文章，欢迎广大数据分析爱好者前往交流讨论。
+&emsp;&emsp;欢迎访问官网https://sentosa.znv.com/
+下载体验Sentosa_DSML社区版。同时，我们在B站、CSDN、知乎、博客园等平台也有技术讨论博客和文章，欢迎广大数据分析爱好者前往交流讨论。
 &emsp;&emsp;**Sentosa_DSML社区版，重塑数据分析新纪元，以可视化拖拽方式指尖轻触解锁数据深层价值，让数据挖掘与分析跃升至艺术境界，释放思维潜能，专注洞察未来。**
 
 [Sentosa_DSML社区版官网](https://sentosa.znv.com/)
