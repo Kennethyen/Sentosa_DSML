@@ -14,17 +14,19 @@ Sentosa数据科学与机器学习平台（**Sentosa_DSML**）是力维智联完
 
 ## 3.Sentosa_DSML社区版定位
 
-![image](https://github.com/user-attachments/assets/0ddf2aac-c2c5-4f8a-80ce-0233159c93d0)
+![image](https://github.com/user-attachments/assets/dc266a8b-f30b-4345-be4a-0d964cfaa806)
+
 
 
 
 **为了非商业用途的科研学者、研究人员及开发者提供学习、交流及实践机器学习技术，推出了一款轻量化且完全免费的Sentosa_DSML社区版**。该产品包含了Sentosa_DSML数据科学与机器学习平台中机器学习平台的大部分功能，以**轻量化一键安装、平台免费使用、视频教学和社区论坛服务**为主要特点，能够与其他数据科学家和机器学习爱好者交流心得，分享经验和解决问题。
 
-![image](https://github.com/user-attachments/assets/d39ba3cf-8c09-4700-b9f8-d1af6ad718d5)
+![image](https://github.com/user-attachments/assets/114b13ff-5c69-4e27-8f45-3faa96ae2a70)
+
 
 
 ## 4.什么是Sentosa_DSML社区版
-![image](https://github.com/user-attachments/assets/d5a99cfb-f344-4a6a-a654-cf9d1aeadcc7)
+![image](https://github.com/user-attachments/assets/606fc1da-1069-4fc0-8d18-95048f47c79b)
 
 1.Sentosa_DSML社区版是一个数据智能分析挖掘平台，通过这个平台可以采用商业技术快速建立预测性模型，并将其应用于商业活动，从而改进决策过程。Sentosa_DSML社区版参照行业标准 CRISP-DM 模型设计而成，可支持从原始数据到更优商业成果的整个数据挖掘过程。
 2.Sentosa_DSML社区版提供了各种借助机器学习、人工智能和统计学的建模方法。通过建模选项板中的方法，您可以根据数据生成新的信息以及开发预测模型。每种方法各有所长，同时适用于解决特定类型的问题。提供完备的算子集，以可插拔，搭积的模块化方式集成进平台。提供完整的架构支持算子的设置，编排，运行，部署，可以根据实际业务情况，以可视化的方式堆叠算子，快速构建模型。
@@ -60,6 +62,7 @@ CSDN地址：https://blog.csdn.net/qq_45586013?spm=1000.2115.3001.5343
 知乎地址：https://www.zhihu.com/people/kennethfeng-che/posts
 博客园地址：https://www.cnblogs.com/KennethYuen
 
-![image](https://github.com/user-attachments/assets/07f13f28-183e-4042-be34-9a5cb9d2e84b)
+![image](https://github.com/user-attachments/assets/53ecbc1f-f87d-415a-9f30-d80f77ba7767)
+
 
 
