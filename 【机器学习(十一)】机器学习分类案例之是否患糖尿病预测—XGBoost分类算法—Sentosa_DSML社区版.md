@@ -1,4 +1,3 @@
-﻿@[toc]
 # 一、XGBoost算法
 &emsp;&emsp;关于集成学习中的XGBoost算法原理，已经进行了介绍与总结，相关内容可参考[【机器学习(一)】分类和回归任务-XGBoost算法-Sentosa_DSML社区版](https://blog.csdn.net/qq_45586013/article/details/142068169?spm=1001.2014.3001.5502)一文。本文将利用糖尿病数据集，通过Python代码和Sentosa_DSML社区版分别实现构建XGBoost分类预测模型。随后对模型进行评估，包括评估指标的选择与分析。最后得出实验结果结论，展示模型在糖尿病分类预测中的有效性和准确性，为糖尿病的早期诊断和干预提供了技术手段和决策支持。
 # 二、Python代码和Sentosa_DSML社区版算法实现对比
@@ -138,8 +137,9 @@ plt.savefig(file_path)
 plt.close() 
 ```
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/73475c3bb3414712bde457505bb72b4f.jpeg#pic_center.png =500x400)
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/8654ab0638e047dfb50f360a2311bd30.png#pic_center.png =400x400)
+![image](https://github.com/user-attachments/assets/8cbb5f9f-b8b3-416e-b60e-267fe2db48e6)
+![image](https://github.com/user-attachments/assets/733bec3b-49e6-45a7-88c7-7c9e1cc669cb)
+
 2、Sentosa_DSML社区版实现
 
 &emsp;&emsp;首先，进行数据读入，利用文本算子直接对数据进行读取，选择数据所在路径，
@@ -262,7 +262,7 @@ def plot_roc_curve(model, X_test, y_test):
     
 plot_roc_curve(xgb_model, X_test, y_test)
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/be6c56f1309341d3877971b3c6dfa446.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/405d86f4-70af-40a3-90b6-3a14ef109664)
 2、Sentosa_DSML社区版实现
 &emsp;&emsp;预处理完成后，连接XGBoost分类算子，可再右侧配置算子属性，算子属性中，评估指标即算法的损失函数，有对数损失和分类错误率两种；学习率，树的最大深度，最小叶子节点样本权重和，子采样率，最小分裂损失，每棵树随机采样的列数占比，L1正则化项和L2正则化项都用来防止算法过拟合。子当子节点样本权重和不大于所设的最小叶子节点样本权重和时不对该节点进行进一步划分。最小分裂损失指定了节点分裂所需的最小损失函数下降值。当树构造方法是为hist的时候，需要配置节点方式、最大箱数、是否单精度三个属性。
 &emsp;&emsp;在本案例中，分类模型中的属性配置为，迭代次数：300，学习率：0.3，最小分裂损失：0，数的最大深度：30，最小叶子节点样本权重和：1、子采样率：1，树构造算法:auto，每棵树随机采样的列数占比：0.8，L2正则化项：1，L1正则化项：0，评估指标为对数损失，初始预测分数为0.5，并计算特征重要性和训练数据的混淆矩阵。
@@ -320,7 +320,7 @@ def plot_feature_importance(model):
 print_model_params(xgb_model)
 plot_feature_importance(xgb_model)
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/10678f96adb14cd1bf718ca22afcb529.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/c9f76293-d04c-4886-8e45-0751035540d3)
 2、Sentosa_DSML社区版实现
 &emsp;&emsp;右击查看模型信息，即可展示特征重要性图，混淆矩阵，决策树等模型结果。
 ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/fed92dbfeb6740b9b283fb3596b2e7e0.png)
