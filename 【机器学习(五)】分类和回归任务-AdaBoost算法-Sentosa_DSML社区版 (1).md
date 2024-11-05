@@ -26,28 +26,20 @@
 训练集和权重初始化
 &emsp;&emsp;首先，是训练集和权重初始化部分，
 &emsp;&emsp;设训练集为：
-$$
-T=\left\{\left(x, y_1\right),\left(x_2, y_2\right), \ldots\left(x_m, y_m\right)\right\}
-$$
+$T=\left\{\left(x, y_1\right),\left(x_2, y_2\right), \ldots\left(x_m, y_m\right)\right\}$
 &emsp;&emsp;其中，每个样本$x_i∈R^n$。
  
 &emsp;&emsp;AdaBoost 算法从样本权重初始化开始。最开始，每个样本被赋予相等的权重：
-$$
-D(t)=\left(w_{t 1}, w_{t 2}, \ldots w_{t m}\right) ; \quad w_{1,i}=\frac{1}{m} ; \quad i=1,2 \ldots m
-$$
+$$D(t)=\left(w_{t 1}, w_{t 2}, \ldots w_{t m}\right) ; \quad w_{1,i}=\frac{1}{m} ; \quad i=1,2 \ldots m$$
 &emsp;&emsp;其中，这里，所有权重$w_{1,i}$的总和为1，表示每个样本的初始重要性是相等的。
 
 ### 2、弱分类器的加权误差
-&emsp;&emsp;这里假设我们是二元分类问题，在第 t 轮的迭代中，输出为 $\{-1 ， 1\} ，$ 则第t个弱分类器 $G_t(x)$ 在训统集上的加权误差率为
-$$
-\epsilon_t=P\left(G_t\left(x_i\right) \neq y_i\right)=\sum_{i=1}^m w_{t i} I\left(G_t\left(x_i\right) \neq y_i\right)
-$$
+&emsp;&emsp;这里假设我们是二元分类问题，在第 t 轮的迭代中，输出为 $\{-1 ， 1\} $， 则第t个弱分类器 $G_t(x)$ 在训统集上的加权误差率为
+$$\epsilon_t=P\left(G_t\left(x_i\right) \neq y_i\right)=\sum_{i=1}^m w_{t i} I\left(G_t\left(x_i\right) \neq y_i\right)$$
 &emsp;&emsp;这里的$\epsilon_t$是第 t个弱分类器的加权误差率。  $w_{t i}$是样本i在第t轮的权重，反映了在这一轮中该样本的重要性。加权误差表示的是分类错误的样本的权重总和，如果 $\epsilon_t$接近 0，说明分类器表现良好，错误率很低；如果$\epsilon_t$接近 0.5，说明分类器的表现几乎是随机猜测。
 ### 3、弱分类器的权重
 &emsp;&emsp;对于每一轮的弱分类器，权重系数的表达公式为：
-$$
-\alpha_t=\frac{1}{2} \log \frac{1-\epsilon_t}{\epsilon_t}
-$$
+$$\alpha_t=\frac{1}{2} \log \frac{1-\epsilon_t}{\epsilon_t}$$
 &emsp;&emsp;这个公式表明了弱分类器的表现与其权重之间的关系：
 
 &emsp;&emsp;如果$\epsilon_t$很小，表示弱分类器表现好，那么$\alpha_t$会很大，表示这个分类器在最终组合中有较大的权重。
@@ -82,20 +74,16 @@ $$e_t=\frac{\sum_{i=1}^mw_{t,i}'I(y_i\neq G(x_i))}{\sum_{i=1}^mw_{t,i}'}=\sum_{i
 &emsp;&emsp;在第t+1轮中，样本权重会根据弱分类器的表现进行更新。对于分类错误的样本，其权重会增大，从而在下一轮中对这些样本给予更多的关注。通过以上推导，可以得到Adaboost的弱分类器样本权重更新公式。
 ### 5、样本权重更新
 &emsp;&emsp;接下来，计算AdaBoost 更新样本的权重，以便在下一轮训练中更加关注那些被当前弱分类器错误分类的样本。利用$h_t(x)=h_{t-1}(x)+\alpha_tG_t(x)$和$w_{t,i}^{\prime}=\exp(-y_ih_{t-1}(x))$,可以得到样本权重的更新公式为：
-$$
-w_{t+1, i}=\frac{w_{t i}}{Z_T} \exp \left(-\alpha_t y_i G_t\left(x_i\right)\right)
-$$
+$$w_{t+1, i}=\frac{w_{t i}}{Z_T} \exp \left(-\alpha_t y_i G_t\left(x_i\right)\right)$$
 &emsp;&emsp;其中，$\alpha_t$ 是第 $t$ 个弱分类器的权重， $y_i$ 是样本 $i$ 的真实标签，$G_t\left(x_i\right)$ 是第 $t$ 个弱分类器对样本 $x_i$ 的预测结果。
 &emsp;&emsp;这个公式的作用是通过调整权重来强化难以分类的样本：
-- 如果分类器$G_t\left(x_i\right)$ 对样本 $x_i$ 分类错误，即 $y_i G_t\left(x_i\right)<0$ 会导致 $w_{t+1, i}$ 增大，表示这个样本在下一轮中会被赋予更大的权重，模型会更关注它。
+- 如果分类器$G_t\left(x_i\right)$对样本$x_i$分类错误，即 $y_i G_t\left(x_i\right)<0$ 会导致 $w_{t+1, i}$ 增大，表示这个样本在下一轮中会被赋予更大的权重，模型会更关注它。
 - 如果分类器$G_t\left(x_i\right)$ 对样本 $x_i$ 分类正确，即 $y_i G_t\left(x_i\right)>0$ 会导致 $w_{t+1, i}$ 减小，表示模型认为这个样本已经很好分类了，下轮可以降低它的重要性。
 
 ### 6、AdaBoost 的强分类器
 
 &emsp;&emsp;这里 $Z_t$ 是规范化因子，保证更新后的权重仍然是一个概率分布。其计算公式为：
-$$
-Z_t=\sum_{i=1}^m w_{t i} \exp \left(-\alpha_t y_i G_t\left(x_i\right)\right)
-$$
+$$Z_t=\sum_{i=1}^m w_{t i} \exp \left(-\alpha_t y_i G_t\left(x_i\right)\right)$$
 &emsp;&emsp;通过这个规范化因子，所有的权重从 $w_{t+1, i}$ 被重新调整，使得它们的总和依然为 1。从样本权重更新公式可以看出，分类错误的样本会得到更高的权重，这让下一轮的弱分类器更加关注这些难以分类的样本。这种机制逐步强化了对弱分类器表现不好的部分样本的关注，最终通过多次迭代形成一个强分类器：
 
 $$H(x) = \text{sign}\left(\sum_{t=1}^T \alpha_t G_t(x)\right)$$
@@ -105,17 +93,13 @@ $$H(x) = \text{sign}\left(\sum_{t=1}^T \alpha_t G_t(x)\right)$$
 ### 1、最大误差的计算
 
 &emsp;&emsp;给定第t个弱学习器 $G_t(x)$，其在训练集上的最大误差定义为：
-$$
-E_t=\max \left|y_i-G_t\left(x_i\right)\right| i=1,2 \ldots m
-$$
+$$E_t=\max \left|y_i-G_t\left(x_i\right)\right| i=1,2 \ldots m$$
 &emsp;&emsp;通过计算每个样本上预测值和真实值之间的绝对差值，找到这个差值的最大值。这个最大误差为后续计算每个样本的相对误差提供了一个标准化的尺度，使得每个样本的误差相对该最大误差进行比较。
 
 ### 2、相对误差计算
 
 &emsp;&emsp;然后计算毎个样本i的相对误差
-$$
-e_{t i}=\frac{\left|y_i-G_t\left(x_i\right)\right|}{E_t}
-$$
+$$e_{t i}=\frac{\left|y_i-G_t\left(x_i\right)\right|}{E_t}$$
 &emsp;&emsp;通过相对误差，我们可以统一衡量所有样本的误差，而不受特定样本的绝对误差影响。
 
 ### 3、误差损失调整
@@ -129,36 +113,26 @@ $$e_{t i}=\frac{\left(y_i-G_t\left(x_i\right)\right)^2}{E_t^2}$$
 $$e_{t i}=1-\exp \left(\frac{\left.-\left|y_i-G_t\left(x_i\right)\right|\right)}{E_t}\right)$$
 &emsp;&emsp;指数误差对较大的误差进行了压缩，使其影响变得非线性。
 &emsp;&emsp;最终得到第t个弱学习器的误差率
-$$
-e_t=\sum_{i=1}^m w_{t i} e_{t i}
-$$
+$$e_t=\sum_{i=1}^m w_{t i} e_{t i}$$
 &emsp;&emsp;反映了第t个弱学习器在整个训练集上的整体表现
 ### 4、权重系数计算
 
 &emsp;&emsp;对于第t个弱学习器，权重系数$\alpha_t$的计算公式为：
 
-$$
-\alpha_t=\frac{e_t}{1-e_t}
-$$
+$$\alpha_t=\frac{e_t}{1-e_t}$$
 &emsp;&emsp;这里，权重 $\alpha_t$反映了第 t个弱学习器的重要性。如果误差率 $e_t$小，则$\alpha_t$会较大，表明该弱学习器的重要性较高；反之，误差率大的弱学习器权重较小，这种权重系数分配方法确保了表现更好的弱学习器在组合中获得更大的影响力。
 ### 5、更新样本权重
 &emsp;&emsp;对于更新样本权重D，第t+1个弱学习器的样本集权重系数为：
-$$
-w_{t+1, i}=\frac{w_{t i}}{Z_t} \alpha_t^{1-e_{t i}}
-$$
+$$w_{t+1, i}=\frac{w_{t i}}{Z_t} \alpha_t^{1-e_{t i}}$$
 &emsp;&emsp;样本权重更新的核心思想是，将更多的关注放在那些难以分类的样本上，以便在后续的训练中重点处理这些样本。
 ### 6、规范化因子
 &emsp;&emsp;这里 $Z_t$ 是规范化因子，规范化因子的计算公式为：
 
-$$
-Z_t=\sum_{i=1}^m w_{t i} \alpha_t^{1-e_{t i}}
-$$
+$$Z_t=\sum_{i=1}^m w_{t i} \alpha_t^{1-e_{t i}}$$
 &emsp;&emsp;通过这个规范化步骤，保持了样本权重的标准化，使得权重在每一轮迭代中不会无穷增大或减小。
 ### 7、强学习器
 &emsp;&emsp;回归问题与分类问题略有不同，最终的强回归器 f(x)不是简单的加权和，而是通过选择若干弱学习器中的一个，最终的强回归器为：
-$$
-f(x)=G_{t^*}(x)
-$$
+$$f(x)=G_{t^*}(x)$$
 &emsp;&emsp;其中， $G_{t^*}(x)$ 是所有 $\ln \frac{1}{\alpha_t}, t=1,2, \ldots T$ 的中位数值对应序号 $t^*$ 对应的弱学习器。这种方法能够在一定程度上避免极端弱学习器的影响，从而更稳定地进行回归预测。
 # 三、算法的优缺点
 ### 1、优点
