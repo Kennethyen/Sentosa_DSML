@@ -1,4 +1,3 @@
-﻿@[toc]
 # 一、算法概念
 什么是多层感知机？
 &emsp;&emsp;多层感知机 (Multilayer Perceptron，MLP) 是一种人工神经网络，由多层神经元或节点组成，这些神经元或节点以分层结构排列。它是最简单且使用最广泛的神经网络之一，尤其适用于分类和回归等监督学习任务。
@@ -14,19 +13,19 @@
 # 二、算法原理
 ## （一）感知机
 &emsp;&emsp;感知机由两层神经元组成，输入层接收外界信号后传递给输出层，如下图所示，
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/60f1d6c4c6884de0bce2926405256963.png#pic_center.png =240x340)
+ ![image](https://github.com/user-attachments/assets/55cabb19-04c8-457b-a334-6bea7391d8b0)
 &emsp;&emsp;感知机模型就是尝试找到一条直线，能够把所有的二元类别分离开，给定输入 $\mathbf{x}$ ，权重 $\mathbf{W}$ ，和偏移 $b$ ，感知机输出:
 $$o=\sigma\left( \langle\mathbf{w}, \mathbf{x} \rangle+b \right)$$
 $$\quad\sigma( x )=\left\{\begin{array} {l l} {{1}} & {{\mathrm{~} x > 0}} \\ {{-1}} & {{\mathrm{~} x\leq0}} \\ \end{array} \right. $$
 &emsp;&emsp;初始化权重向量 w 和偏置 b，然后对于分类错误的样本不断更新w和b，直到所有样本都被正确分类。等价于使用批量大小为1的梯度下降，并使用如下的损失函数：
 $$\ell( y, {\bf x}, {\bf w} )=\operatorname* {m a x} ( 0,-y \langle{\bf w}, {\bf x} \rangle) $$
 &emsp;&emsp;感知机只能产生线性分割面，感知机算法的训练过程如下。
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/8835ef92439b4884be52864b0484d17b.jpeg#pic_center)
+![image](https://github.com/user-attachments/assets/592c98be-d7cd-42f8-bbfa-20ebb200ee7c)
 ## （二）多层感知机
 ### 1、隐藏层
 &emsp;&emsp;多层感知机则是在单层神经网络的基础上引入一个或多个隐藏层，使神经网络有多个网络层，下图为两个多层感知机示意图，分别为单隐层和双隐层
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/505748f6b1864f4db0c0478435e662ae.png#pic_center.png =640x450)
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/b301487e5a474f3e8520c7e78e51c70a.png#pic_center.png =660x450)
+![image](https://github.com/user-attachments/assets/62860d0d-a6b5-49a8-8fa3-c6bb954cfcd7)
+![image](https://github.com/user-attachments/assets/9e3c2565-af59-47f2-8ea0-230e6a5814c5)
 &emsp;&emsp;多层感知机中的隐藏层和输出层都是全连接层，输入 $X \in\mathbb{R}^{n \times d}$ ，其中， $n$ 是批量大小， $d$ 是输入特征的数量。输出 $O \in\mathbb{R}^{n \times q}$ ，其中 $q$ 是输出单元的数量。
 &emsp;&emsp;设隐藏层有 $h$ 个隐藏单元，隐藏层的输出 $H$ 是通过输入$X$ 与隐藏层的权重 $W_{h} \in\mathbb{R}^{d \times h}$ 和偏置 $b_{h} \in\mathbb{R}^{1 \times h}$ 计算得到的：$$H=X W_{h}+b_{h} $$
 &emsp;&emsp;输出层的权重为 $W_{o} \in\mathbb{R}^{h \times q}$ ，偏置为 $b_{o} \in\mathbb{R}^{1 \times q}$ 。因此，输出层的输出 $O$ 为:$$O=H W_{o}+b_{o} $$
@@ -46,30 +45,30 @@ $$
 sigma( z )=\frac{1} {1+\operatorname{e x p} (-z )} 
 $$
 &emsp;&emsp;sigma函数也称为 $\mathrm{S}$ 型函数，可以将任何实值数映射到 $0$ 到 $1$ 之间的值。呈S形，具有明确定义的非零导数，这使其适合与反向传播算法一起使用。
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/814ff7bc1e844967b3a0f1e9980cf5c7.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/2af22427-d4bf-4186-bc2a-50f4ebe007aa)
 &emsp;&emsp;sigmoid函数的导数表达式为：
 $$sigma^{\prime} ( z )=sigma( z ) \times( 1-sigma ( z ) ) $$
 &emsp;&emsp;如下所示：
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/f77cb793f94143e5a68b13fced881bb8.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/ac5f5274-54b2-4f43-a073-38dc6ca4206a)
 #### tanh函数
 $$\operatorname{t a n h} ( z )=\frac{1-\operatorname{e x p} (-2z )} {1+\operatorname{e x p} (-2z )} $$
 &emsp;&emsp;双曲正切函数与逻辑函数类似，但输出值在-1和 $1$ 之间。这种居中效果有助于加快训练期间的收敛速度。
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/b9e768768c40471d9e53268a6c280df2.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/e46ebde3-3f5c-420d-a5a8-86708418438d)
 &emsp;&emsp;tanh导数表达式如下所示：
 $$tanh^{\prime} ( z)=1-\operatorname{t a n h}^{2} ( z ) $$
 &emsp;&emsp;下面绘制了tanh函数的导数。当输入为0时，tanh函数的导数达到最大值1；当输入越偏离0时，tanh函数的导数越接近0。
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/290a69301cfc41ed802dac2fbe765fc0.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/b594f506-deb0-43c5-90dd-67ea6799a3ba)
 #### ReLU函数
 $$
 \mathrm{R e L U} ( z )=\operatorname* {m a x} ( 0, z ) 
 $$
 &emsp;&emsp;ReLU 函数因其简单性和有效性而被广泛应用于深度学习。如果输入值为正，则输出输入值；否则输出零。尽管 ReLU 在零处不可微，并且对于负输入具有零梯度，但它在实践中表现良好，有助于缓解梯度消失问题
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/c52163e7ebe94619b86fdaae4c0fdc97.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/fea6fe08-effd-459c-a31b-008159f5c34d)
 &emsp;&emsp;当输入为负数时，ReLU函数的导数为0；当输入为正数时，ReLU函数的导数为1，
 &emsp;&emsp;ReLU 函数的导数表达式为：
 $$R e L U^{\prime} ( z )=\begin{cases} {{1}} & {{\mathrm{i f ~} z > 0}} \\ {{0}} & {{\mathrm{i f ~} z \leq0}} \\ \end{cases} $$
 &emsp;&emsp;下面绘制ReLU函数的导数，
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/22c67ea8dda44a70bdd0dbb846672b86.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/e3935408-6bf1-4dbb-90aa-901de10e5529)
 ### 3、反向传播算法
 **1、前向传播**
 &emsp;&emsp;前向传播是反向传播的前提。在前向传播过程中，数据从输入层逐步传递至输出层，经过每一层的计算，最终得到预测输出。
@@ -196,7 +195,7 @@ plt.xlabel('Mean Importance Score')
 plt.title('Permutation Feature Importance')
 plt.show()
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/4a2f8d45a88b4c1bbaeee9c7db971823.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/2a76299d-6f74-4f9d-a248-9b4d4b25fdc6)
 ### 2、Sentosa_DSML社区版
 &emsp;&emsp;模型后可以连接评估算子，对模型的分类结果进行评估。算子流如下图所示，
 ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/f66fb47580f34c5f89853d68146bd7bd.jpeg#pic_center)
@@ -299,7 +298,7 @@ plt.ylabel('Frequency')
 plt.grid(True)
 plt.show()
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/a3842cd9c1534168986649a58aecf0bf.png#pic_center.png =400x300)
+![image](https://github.com/user-attachments/assets/3cdbe0ea-1db6-4ddc-8d75-b7fa933c5903)
 ### 2、Sentosa_DSML社区版
 &emsp;&emsp;模型后可接评估算子，对模型的回归结果进行评估。
 ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/2e9ed21e05b5464897acfbdc3a8b4c33.png#pic_center)
