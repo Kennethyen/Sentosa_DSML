@@ -1,4 +1,3 @@
-﻿@[toc]
 # 一、算法概念
 什么是KNN？
 &emsp;&emsp;K-近邻 (KNN) 是一种监督算法。KNN 背后的基本思想是在训练空间中找到距离新数据点最近的 K 个数据点，然后根据 k 个最近数据点中多数类别对新数据点进行分类，类似于“物以类聚”的思想，将一个样本的类别归于它的邻近样本。K-近邻算法是一种惰性学习模型(lazy learning)，也称为基于实例学习模型，这与勤奋学习模型(eager learning)不一样。
@@ -10,10 +9,10 @@ K-近邻算法是一种非参数模型，参数模型使用固定的数量的参
 多数表决法：分类时，哪些样本离我的目标样本比较近，即目标样本离哪个分类的样本更接近。
 &emsp;&emsp;平均值法： 预测一个样本的平均身高，观察目标样本周围的其他样本的平均身高，我们认为平均身高是目标样本的身高。
 &emsp;&emsp;这里就运用了KNN的思想。KNN方法既可以做分类，也可以做回归，这点和决策树等算法相同。
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/e762e2ac66e3479599763c593905c839.jpeg#pic_center.png =400x350)
+![image](https://github.com/user-attachments/assets/5204bcd6-11c4-4574-b019-f4152d48628f)
 &emsp;&emsp;由上图KNN分类算法可以发现，数据分为蓝色和绿色两个类别，当有一个新的数据点（红色）出现，并且 K = 5时，可以看到红色点有 3 个绿色近邻样本和 2个蓝色近邻样本，这说明蓝点将被归类为绿色类，因为多数投票为 3。同样，当 K 值变化时，圆内的近邻样本数量会增加，新的数据点被归类到其对应的多数投票类中。
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/28a49ac35f6e4798be39f9d1fa743eee.png#pic_center.png =400x350)
+![image](https://github.com/user-attachments/assets/df07d83e-d378-458e-a16a-eddc59e42472)
 &emsp;&emsp;在 KNN 回归中，因变量是连续的，分布在整个特征空间中。当有新的数据点红色点出现时，会使用某种距离度量（如欧几里得距离）找到最接近的新数据点的 K 个近邻样本。找到这些邻居后，新数据点的预测值通过计算这些邻居的因变量值的平均值来确定。
 例如，假设我们想预测学生的考试成绩，而已知的特征是学习时长。我们已经有了许多学生的学习时长和对应的考试成绩数据。现在，针对一个新来的学生，我们知道他的学习时长，通过 KNN 回归，我们可以找到学习时长最接近的 K 个学生，然后将这 K 个学生的考试成绩取平均值，作为这个新学生的成绩预测。
 # 二、算法原理
@@ -35,13 +34,13 @@ K-近邻算法是一种非参数模型，参数模型使用固定的数量的参
 &emsp;&emsp;距离度量是 KNN 算法中用来计算数据点之间相似性的重要组成部分，以下是几种常见的距离度量类型：
 ### 1、欧式距离
 &emsp;&emsp;欧式距离是 KNN 中最广泛使用的距离度量，表示两个数据点在欧几里得空间中的直线距离。
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/5ec661afaa9f41e59aa62c4788df72b1.png#pic_center.png =400x350)
+![image](https://github.com/user-attachments/assets/4f785e72-5e45-4089-8849-bc349843435f)
 
 &emsp;&emsp;计算公式如下：
 $$d(x,y)=\sqrt{\sum_{i=1}^n\left(x_i-y_i\right)^2}$$
 ### 2、曼哈顿距离
 &emsp;&emsp;曼哈顿距离（Manhattan Distance）是一种衡量两点之间距离的方式，两个点之间的距离是沿着网格（即水平和垂直方向）的路径总和，而不是像欧几里得距离那样的直线距离。
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/318ac8943f7044ef95096a4b2d0347a2.png#pic_center.png =400x350)
+![image](https://github.com/user-attachments/assets/cfac6aff-7056-4424-8d3e-bd7a4864274e)
 &emsp;&emsp;计算公式如下：
 
 $$d(x,y)=\sum_{i=1}^n|x_i-y_i|$$
@@ -191,7 +190,7 @@ plt.tight_layout()
 plt.show()
 ```
 &emsp;&emsp;可以绘制Iris数据集中各个特征在不同分类下的分布图，以帮助我们了解不同类别的鸢尾花（Species）在不同特征（如sepal_length, sepal_width等）上的分布情况，生成了4个箱线图，每个箱线图展示了一个特征在不同Species（花种）类别上的分布情况。
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/b2b0145ca47c47e183589024276a1012.png)
+![image](https://github.com/user-attachments/assets/ba064e4d-b56c-4481-a06e-ffc7c38f5319)
 ### 2、Sentosa_DSML社区版
 &emsp;&emsp;连接评估算子对模型进行评估
 ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/06dfc9a201cc4a3b861d48df69391ee4.png#pic_center)
