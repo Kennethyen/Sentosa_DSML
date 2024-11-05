@@ -1,4 +1,3 @@
-﻿@[toc]
 # 一、背景描述
 &emsp;&emsp;股票价格是一种不稳定的时间序列,受多种因素的影响。影响股市的外部因素很多,主要有经济因素、政治因素和公司自身因素三个方面的情况。自股票市场出现以来,研究人员采用各种方法研究股票价格的波动。随着数理统计方法和机器学习的广泛应用,越来越多的人将机器学习等预测方法应用于股票预测中,如神经网络预测、决策树预测、支持向量机预测、逻辑回归预测等。
 &emsp;&emsp;XGBoost是由TianqiChen在2016年提出来,并证明了其模型的计算复杂度低、运行速度快、准确度高等特点。XGBoost是GBDT的高效实现。在分析时间序列数据时,GBDT虽然能有效提高股票预测结果,但由于检测速率相对较慢,为寻求快速且精确度较高的预测方法,采用XGBoost模型进行股票预测,在提高预测精度同时也提高预测速率。可以利用XGBoost网络模型对股票历史数据的收盘价进行分析预测,将真实值和预测值进行对比,最后通过评估算子来评判XGBoost模型对股价预测的效果。
@@ -68,7 +67,7 @@ plt.ylabel('Price')
 plt.legend()
 plt.show()
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/07c8170aa2124aa995c37cef0687c6b8.jpeg#pic_center.png =500x300)
+![image](https://github.com/user-attachments/assets/28c10d47-e7af-4d4b-bf99-a3b6425a7dd9)
 
 得到实际股价与平均股价的差值的绝对值，观察偏离水平。
 
@@ -90,7 +89,7 @@ plt.legend(loc='upper left')
 plt.title('Deviation from Moving Averages')
 plt.show()
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/82534a1f42d743c286c9a01ae797b4a3.jpeg#pic_center.png =500x300)
+![image](https://github.com/user-attachments/assets/2ee0afc1-9150-443d-aa4e-d8b8cc8caf5a)
 ```python
 def calculate_vwap(df, close_col='close', vol_col='vol'):
     if close_col not in df.columns or vol_col not in df.columns:
@@ -327,8 +326,9 @@ plt.grid()
 plt.show()`
 ```
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/36a0a907f6e446278ff839fc81776972.jpeg#pic_center.png =500x300)
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/db199c44526743baa72c56d5afabe7b5.jpeg#pic_center.png =500x300)
+![image](https://github.com/user-attachments/assets/edfd048a-2324-4139-9376-15961d83d8d8)
+![image](https://github.com/user-attachments/assets/d8210206-9664-4d33-b0d0-7127acdc67f1)
+
 
 2、Sentosa_DSML社区版实现
 
