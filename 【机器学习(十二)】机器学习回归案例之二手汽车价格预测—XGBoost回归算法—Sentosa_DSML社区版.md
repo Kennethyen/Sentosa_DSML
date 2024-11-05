@@ -1,6 +1,4 @@
-﻿
-@[toc]
-# 一、算法和背景介绍
+﻿# 一、算法和背景介绍
 &emsp;&emsp;关于XGBoost的算法原理，已经进行了介绍与总结，相关内容可参考[【机器学习(一)】分类和回归任务-XGBoost算法-Sentosa_DSML社区版](https://blog.csdn.net/qq_45586013/article/details/142068169?spm=1001.2014.3001.5502)一文。本文以预测二手车的交易价格为目标，通过Python代码和Sentosa_DSML社区版分别实现构建XGBoost回归预测模型，并对模型进行评估，包括评估指标的选择与分析。最后得出实验结论，确保模型在二手汽车价格回归预测中的有效性和准确性。
 
 **数据集介绍**
@@ -147,7 +145,7 @@ if 'car_brand' in df.columns and 'price' in df.columns:
     plt.savefig(file_path)
     plt.close()
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/4d6bde2810d84979aee7c232ca50fd6f.jpeg#pic_center.png =500x300)
+![image](https://github.com/user-attachments/assets/c2fc1352-17db-4cc2-92cf-6c42eb9734a0)
 2、Sentosa_DSML社区版实现
 &emsp;&emsp;首先，进行数据读入，利用文本算子直接对数据进行读取，右侧进行读取属性配置
 ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/b56080930e014261aa20b8d84cca3621.png#pic_center)
@@ -315,7 +313,7 @@ log1p_price_corr = correlation_matrix['log1p_price'].drop('log1p_price')
 
 print(log1p_price_corr)
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/08b08f4fcfbe436ea795595cfe8a4562.png#pic_center.png =500x300)
+![image](https://github.com/user-attachments/assets/26534f8d-890b-416e-a5f9-eee037eebc0a)
 &emsp;&emsp;删除'SaleID', 'name', 'regDate', 'model', 'brand', 'regionCode', 'seller', 'offerType', 'creatDate', 'price', 'v_4', 'v_7', 'v_13', 'regDate_year', 'regDate_month', 'regDate_day'列并进行流式归一化：
 
 ```python
@@ -455,8 +453,8 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.show()
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/231c3b2651ab4bcb81618cefe923a3e8.jpeg#pic_center.png =400x300)
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/4dd45f343a9d47ccb15dfd0e87e7755b.jpeg#pic_center.png =500x300)
+![image](https://github.com/user-attachments/assets/7e4ec444-d101-4c85-9cb8-3437eebdb662)
+![image](https://github.com/user-attachments/assets/d17c386c-19e6-4333-bf8b-957e24c1b4ef)
 
 ```python
 test_data = pd.DataFrame(X_test)
@@ -481,7 +479,7 @@ plt.grid()
 
 plt.show()
 ```
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/464bc17cf9384e3db7426cb0701591f4.jpeg#pic_center.png =600x300)
+![image](https://github.com/user-attachments/assets/cb19bcf8-5b95-4b60-89ba-cb385e88850c)
 
 2、Sentosa_DSML社区版实现
 
