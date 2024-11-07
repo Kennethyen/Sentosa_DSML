@@ -1,4 +1,3 @@
-﻿@[toc]
 # 第二章：Sentosa_DSML社区版产品功能
 ## 1.公共功能
 
@@ -262,10 +261,6 @@ GitHub地址：https://github.com/Kennethyen/Sentosa_DSML
 知乎地址：https://www.zhihu.com/people/kennethfeng-che/posts
 博客园地址：https://www.cnblogs.com/KennethYuen
 ![Sentosa_DSML社区版官网](https://i-blog.csdnimg.cn/direct/93c9871e1bbb43b9a2f8f99648354df9.png#pic_center)
-
-[video(video-Ii7ACWb6-1725949695276)(type-csdn)(url-https://live.csdn.net/v/embed/423332)(image-https://img-home.csdnimg.cn/images/20230724024159.png?be=1&origin_url=https://v-blog.csdnimg.cn/asset/2d9c7938e2725ef1c392db3bf80e6148/cover/Cover0.jpg)(title-Sentosa_DSML算子流开发视频)]
-
-
 
 
 
